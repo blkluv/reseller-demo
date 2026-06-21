@@ -173,18 +173,21 @@ function OverviewDetail({ detail }: { detail: DomainSearchResult }) {
       <p>
         <strong>Name:</strong> {detail.name}
       </p>
-      {reg?.status && (
+      {/* Fixed: reg && reg.status instead of reg?.status && */}
+      {reg && reg.status && (
         <p>
           <strong>Status:</strong> {String(reg.status)}
         </p>
       )}
-      {reg?.expirationDate && (
+      {/* Fixed: reg && reg.expirationDate instead of reg?.expirationDate && */}
+      {reg && reg.expirationDate && (
         <p>
           <strong>Expires:</strong>{" "}
           {new Date(String(reg.expirationDate)).toLocaleDateString()}
         </p>
       )}
-      {reg?.expirationGracePeriodDate && (
+      {/* Fixed: reg && reg.expirationGracePeriodDate instead of reg?.expirationGracePeriodDate && */}
+      {reg && reg.expirationGracePeriodDate && (
         <p>
           <strong>Grace period ends:</strong>{" "}
           {new Date(String(reg.expirationGracePeriodDate)).toLocaleDateString()}
