@@ -173,6 +173,7 @@ function OverviewDetail({ detail }: { detail: DomainSearchResult }) {
       <p>
         <strong>Name:</strong> {detail.name}
       </p>
+      {/* FIXED: Use reg && reg.property instead of reg?.property && */}
       {reg && reg.status && (
         <p>
           <strong>Status:</strong> {String(reg.status)}
