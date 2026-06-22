@@ -173,7 +173,7 @@ function OverviewDetail({ detail }: { detail: DomainSearchResult }) {
       <p>
         <strong>Name:</strong> {detail.name}
       </p>
-      {/* FIXED: Use reg && reg.property instead of reg?.property && */}
+      {/* FIXED: Use reg && reg.property instead of reg && reg.property && */}
       {reg && reg.status && (
         <p>
           <strong>Status:</strong> {String(reg.status)}
@@ -191,20 +191,20 @@ function OverviewDetail({ detail }: { detail: DomainSearchResult }) {
           {new Date(String(reg.expirationGracePeriodDate)).toLocaleDateString()}
         </p>
       )}
-      {(reg?.pricing as any)?.renewal?.subTotal?.usdCents != null && (
+      {(reg && reg.pricing as any)?.renewal?.subTotal?.usdCents != null && (
         <p>
           <strong>Renewal price:</strong> $
           {((reg.pricing as any).renewal.subTotal.usdCents / 100).toFixed(2)}
           /year
         </p>
       )}
-      {(reg?.icann as any)?.ownershipVerification && (
+      {(reg && reg.icann as any)?.ownershipVerification && (
         <p>
           <strong>ICANN verification:</strong>{" "}
           {String((reg.icann as any).ownershipVerification)}
         </p>
       )}
-      {(reg?.icann as any)?.registrar?.type && (
+      {(reg && reg.icann as any)?.registrar?.type && (
         <p>
           <strong>Registrar type:</strong>{" "}
           {String((reg.icann as any).registrar.type)}
