@@ -1,167 +1,237 @@
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-
 export default function HomePage() {
   const { user, loading } = useAuth();
-
   if (loading) return <p aria-busy="true">Loading...</p>;
   if (user) return <Navigate to="/dashboard" replace />;
-
   return (
-    <article style={{ maxWidth: "720px", margin: "0 auto", padding: "2rem 1rem" }}>
-      <header style={{ textAlign: "center" }}>
-        <h1 style={{ fontSize: "2.4rem", lineHeight: 1.2 }}>
-          🌟 Manifest the new you <br />
-          <span style={{ color: "var(--primary)" }}>
-            starting with your I AM name.
-          </span>
-        </h1>
-        <p style={{ fontSize: "1.2rem", marginTop: "0.5rem" }}>
-          Your name is your power. Own it. Live it. Login with it.
-        </p>
-      </header>
-
-      {/* ——— CORE PITCH ——— */}
-      <section style={{ marginTop: "2.5rem" }}>
-        <div
+    <article
+      style={{
+        maxWidth: "1100px",
+        margin: "0 auto",
+        padding: "2rem 1rem 6rem",
+      }}
+    >
+      {/* HERO */}
+      <header
+        style={{
+          textAlign: "center",
+          padding: "5rem 0",
+        }}
+      >
+        <p
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-            gap: "1rem",
-            textAlign: "center",
+            fontSize: ".95rem",
+            fontWeight: 700,
+            letterSpacing: ".1em",
+            textTransform: "uppercase",
+            opacity: 0.7,
           }}
         >
-          <div style={{ background: "var(--card-background)", padding: "1rem", borderRadius: "12px" }}>
-            <div style={{ fontSize: "2.2rem" }}>📬</div>
-            <h4>Forwarding Address</h4>
-            <p style={{ fontSize: "0.9rem", margin: 0 }}>
-              One name. All your accounts. No more "lost in the shuffle."
-            </p>
-          </div>
-          <div style={{ background: "var(--card-background)", padding: "1rem", borderRadius: "12px" }}>
-            <div style={{ fontSize: "2.2rem" }}>🔑</div>
-            <h4>Yours Forever</h4>
-            <p style={{ fontSize: "0.9rem", margin: 0 }}>
-              No renewals. No rent. No one can take it away. Ever.
-            </p>
-          </div>
-          <div style={{ background: "var(--card-background)", padding: "1rem", borderRadius: "12px" }}>
-            <div style={{ fontSize: "2.2rem" }}>🌐</div>
-            <h4>Your Digital You</h4>
-            <p style={{ fontSize: "0.9rem", margin: 0 }}>
-              One identity for your socials, your payments, and your vibe.
-            </p>
-          </div>
+          I AM Identity
+        </p>
+        <h1
+          style={{
+            fontSize: "4rem",
+            lineHeight: 1,
+            marginBottom: "1.5rem",
+          }}
+        >
+          Stop renting
+          <br />
+          your identity.
+        </h1>
+        <p
+          style={{
+            maxWidth: "650px",
+            margin: "0 auto",
+            fontSize: "1.35rem",
+            opacity: 0.8,
+          }}
+        >
+          Your username. Your login. Your payment address.
+          One name that works everywhere.
+        </p>
+        <div
+          style={{
+            marginTop: "2.5rem",
+            display: "flex",
+            justifyContent: "center",
+            gap: "1rem",
+            flexWrap: "wrap",
+          }}
+        >
+          <Link
+            to="/register"
+            role="button"
+            style={{
+              background: "#000",
+              color: "#fff",
+              padding: "18px 34px",
+              borderRadius: "999px",
+              fontWeight: 700,
+            }}
+          >
+            Claim Your I AM
+          </Link>
+          <Link
+            to="/login"
+            role="button"
+            className="outline"
+            style={{
+              padding: "18px 34px",
+              borderRadius: "999px",
+            }}
+          >
+            Login
+          </Link>
         </div>
+      </header>
+      {/* GEN Z SECTION */}
+      <section style={{ marginTop: "3rem" }}>
+        <h2 style={{ fontSize: "2.4rem" }}>
+          Everyone has a username.
+          <br />
+          Why don't you own yours?
+        </h2>
+        <p style={{ fontSize: "1.1rem", opacity: 0.75 }}>
+          TikTok has @handles. Cash App has $cashtags.
+          Instagram has usernames.
+          I AM gives you one identity for everything.
+        </p>
       </section>
-
-      {/* ——— WHAT IT SOLVES ——— */}
-      <section style={{ marginTop: "2.5rem" }}>
-        <h3>✨ What your I AM name fixes (no tech talk, just real life)</h3>
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          <li style={{ padding: "0.5rem 0", borderBottom: "1px solid var(--border)" }}>
-            <span style={{ fontSize: "1.4rem" }}>🔐</span>{" "}
-            <strong>Passwords are a headache.</strong> Use your I AM name to log into apps—one click, no remembering 47 passwords.
-          </li>
-          <li style={{ padding: "0.5rem 0", borderBottom: "1px solid var(--border)" }}>
-            <span style={{ fontSize: "1.4rem" }}>💸</span>{" "}
-            <strong>Venmo-ing friends is awkward.</strong> Send money to <code>@yourname</code> instead of a 32-character mess.
-          </li>
-          <li style={{ padding: "0.5rem 0", borderBottom: "1px solid var(--border)" }}>
-            <span style={{ fontSize: "1.4rem" }}>📱</span>{" "}
-            <strong>Your social handles don't match.</strong> One name across TikTok, IG, X, and your own site—no more <code>@johndoe2847</code>.
-          </li>
-          <li style={{ padding: "0.5rem 0" }}>
-            <span style={{ fontSize: "1.4rem" }}>❤️</span>{" "}
-            <strong>Dating is confusing.</strong> Imagine matching with someone and they just say *"I'm @soulmate.x — find me there."* Clean. Direct. No ghosting.
-          </li>
-        </ul>
-      </section>
-
-      {/* ——— THE "I AM" CONCEPT ——— */}
+      {/* FEATURES */}
       <section
         style={{
-          marginTop: "2.5rem",
-          background: "var(--card-background)",
-          padding: "1.5rem",
-          borderRadius: "16px",
-          borderLeft: "4px solid var(--primary)",
+          marginTop: "4rem",
+          display: "grid",
+          gap: "1rem",
+          gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
         }}
       >
-        <h3 style={{ marginTop: 0 }}>🧘 What does "I AM" mean?</h3>
-        <p>
-          <strong>I AM</strong> is your digital soul. It's not a wallet. It's not a URL. It's <em>you</em>—manifested online.
-        </p>
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          <li>✅ <strong>Your name</strong> (not a number)</li>
-          <li>✅ <strong>Your address</strong> for money, messages, and connections</li>
-          <li>✅ <strong>Your login</strong> for every app that matters</li>
-          <li>✅ <strong>Your brand</strong> that nobody can delete, freeze, or take away</li>
-        </ul>
-        <p style={{ marginBottom: 0, fontSize: "0.95rem", opacity: 0.8 }}>
-          ⚡ Example: <code style={{ fontWeight: "bold" }}>iam.blkluv.org</code> is your portal. Login with your I AM name—and you're in.
-        </p>
-      </section>
-
-      {/* ——— WHY NOW ——— */}
-      <section style={{ marginTop: "2.5rem" }}>
-        <h3>📈 Why the smartest people are claiming their I AM name right now</h3>
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", fontSize: "0.9rem" }}>
-            <thead>
-              <tr>
-                <th>What happened</th>
-                <th>Result</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Someone bought a name for <strong>$12</strong> and later sold it</td>
-                <td><strong>$8,500</strong> (that's a <span style={{ color: "green" }}>+70,700%</span> glow-up)</td>
-              </tr>
-              <tr>
-                <td>Average domain investor profit</td>
-                <td><strong>$1,000 – $5,000</strong> per flip</td>
-              </tr>
-              <tr>
-                <td>Market grew in 2024</td>
-                <td><strong>+32.8%</strong> to <strong>$185 million</strong></td>
-              </tr>
-              <tr>
-                <td>Beginner-friendly potential</td>
-                <td><strong>$100 – $10,000</strong> starting out</td>
-              </tr>
-            </tbody>
-          </table>
+        <div style={{ background: "#f6f6f6", padding: "2rem", borderRadius: "24px" }}>
+          <div style={{ fontSize: "2rem" }}>🔑</div>
+          <h3>Login</h3>
+          <p>Forget passwords. Sign in with your I AM everywhere.</p>
         </div>
-        <p style={{ fontSize: "0.85rem", opacity: 0.7, marginTop: "0.5rem" }}>
-          ⚠️ Not a get-rich-quick thing. It takes strategy, research, and a little patience—but the door is wide open.
-        </p>
+        <div style={{ background: "#f6f6f6", padding: "2rem", borderRadius: "24px" }}>
+          <div style={{ fontSize: "2rem" }}>💸</div>
+          <h3>Get Paid</h3>
+          <p>People send money to your name, not random numbers.</p>
+        </div>
+        <div style={{ background: "#f6f6f6", padding: "2rem", borderRadius: "24px" }}>
+          <div style={{ fontSize: "2rem" }}>🌎</div>
+          <h3>Share Yourself</h3>
+          <p>One identity for TikTok, Instagram, X and your website.</p>
+        </div>
+        <div style={{ background: "#f6f6f6", padding: "2rem", borderRadius: "24px" }}>
+          <div style={{ fontSize: "2rem" }}>♾️</div>
+          <h3>Keep It Forever</h3>
+          <p>No monthly fees. No renting your identity.</p>
+        </div>
       </section>
-
-      {/* ——— CALL TO ACTION ——— */}
+      {/* COMPARISON */}
+      <section
+        style={{
+          marginTop: "5rem",
+          background: "#000",
+          color: "#fff",
+          padding: "4rem",
+          borderRadius: "32px",
+        }}
+      >
+        <h2 style={{ fontSize: "3rem" }}>
+          You're not buying a domain.
+          <br />
+          You're claiming yourself.
+        </h2>
+        <div
+          style={{
+            marginTop: "2rem",
+            display: "grid",
+            gap: "1rem",
+            gridTemplateColumns: "1fr 1fr",
+          }}
+        >
+          <div>
+            <h3>I AM</h3>
+            <p>✅ Built for people</p>
+            <p>✅ Login with your name</p>
+            <p>✅ Payments + messages + identity</p>
+            <p>✅ Human-first</p>
+          </div>
+          <div>
+            <h3>Traditional domains</h3>
+            <p>• Websites</p>
+            <p>• Wallet addresses</p>
+            <p>• Technical setup</p>
+            <p>• Domain-first</p>
+          </div>
+        </div>
+      </section>
+      {/* EXAMPLE */}
+      <section style={{ marginTop: "5rem" }}>
+        <h2 style={{ fontSize: "2.8rem" }}>
+          Imagine having one name
+          for everything.
+        </h2>
+        <div
+          style={{
+            background: "#f8f8f8",
+            padding: "2rem",
+            borderRadius: "24px",
+            marginTop: "2rem",
+          }}
+        >
+          <h3>@maya</h3>
+          <p>✓ Login</p>
+          <p>✓ Receive payments</p>
+          <p>✓ Creator profile</p>
+          <p>✓ Website</p>
+          <p>✓ Social links</p>
+          <p>✓ Messages</p>
+        </div>
+      </section>
+      {/* CTA */}
       <footer
         style={{
-          marginTop: "3rem",
-          paddingTop: "2rem",
-          borderTop: "1px solid var(--border)",
           textAlign: "center",
+          marginTop: "6rem",
         }}
       >
-        <p style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-          🚀 Ready to become your I AM name?
+        <h2
+          style={{
+            fontSize: "3rem",
+            lineHeight: 1.1,
+          }}
+        >
+          One name.
+          <br />
+          Everything.
+        </h2>
+        <p
+          style={{
+            maxWidth: "600px",
+            margin: "1rem auto 2rem",
+            opacity: 0.7,
+          }}
+        >
+          Everyone owns usernames.
+          Very few people own themselves.
         </p>
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <Link to="/login" role="button" style={{ minWidth: "140px" }}>
-            Login with I AM
-          </Link>
-          <Link to="/register" role="button" className="outline" style={{ minWidth: "140px" }}>
-            Claim Your Name
-          </Link>
-        </div>
-        <p style={{ fontSize: "0.85rem", opacity: 0.6, marginTop: "1rem" }}>
-          Already have an I AM name? Login above. New here? Claim yours—it's a one-time thing. Forever.
-        </p>
+        <Link
+          to="/register"
+          role="button"
+          style={{
+            background: "#000",
+            color: "#fff",
+            padding: "20px 40px",
+            borderRadius: "999px",
+            fontWeight: 700,
+          }}
+        >
+          Claim Your I AM
+        </Link>
       </footer>
     </article>
   );
