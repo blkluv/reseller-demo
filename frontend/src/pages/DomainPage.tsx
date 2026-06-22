@@ -166,48 +166,62 @@ function OverviewTab({
 }
 
 function OverviewDetail({ detail }: { detail: DomainSearchResult }) {
-  const reg = detail.registration as Record<string, unknown> | undefined;
+  const reg = detail.registration as Record<string, any> | undefined;
+
+  const pricing = reg?.pricing;
+  const renewal = pricing?.renewal;
+  const subTotal = renewal?.subTotal;
+
+  const icann = reg?.icann;
+  const ownershipVerification = icann?.ownershipVerification;
+  const registrarType = icann?.registrar?.type;
 
   return (
     <article>
       <p>
         <strong>Name:</strong> {detail.name}
       </p>
-      {/* FIXED: Use reg && reg.property instead of reg && reg.property && */}
-      {reg && reg.status && (
+
+      {reg?.status && (
         <p>
           <strong>Status:</strong> {String(reg.status)}
         </p>
       )}
-      {reg && reg.expirationDate && (
+
+      {reg?.expirationDate && (
         <p>
           <strong>Expires:</strong>{" "}
           {new Date(String(reg.expirationDate)).toLocaleDateString()}
         </p>
       )}
-      {reg && reg.expirationGracePeriodDate && (
+
+      {reg?.expirationGracePeriodDate && (
         <p>
           <strong>Grace period ends:</strong>{" "}
-          {new Date(String(reg.expirationGracePeriodDate)).toLocaleDateString()}
+          {new Date(
+            String(reg.expirationGracePeriodDate)
+          ).toLocaleDateString()}
         </p>
       )}
-      {(reg && reg.pricing as any)?.renewal?.subTotal?.usdCents != null && (
+
+      {subTotal?.usdCents != null && (
         <p>
           <strong>Renewal price:</strong> $
-          {((reg.pricing as any).renewal.subTotal.usdCents / 100).toFixed(2)}
+          {(subTotal.usdCents / 100).toFixed(2)}
           /year
         </p>
       )}
-      {(reg && reg.icann as any)?.ownershipVerification && (
+
+      {ownershipVerification && (
         <p>
           <strong>ICANN verification:</strong>{" "}
-          {String((reg.icann as any).ownershipVerification)}
+          {String(ownershipVerification)}
         </p>
       )}
-      {(reg && reg.icann as any)?.registrar?.type && (
+
+      {registrarType && (
         <p>
-          <strong>Registrar type:</strong>{" "}
-          {String((reg.icann as any).registrar.type)}
+          <strong>Registrar type:</strong> {String(registrarType)}
         </p>
       )}
     </article>
