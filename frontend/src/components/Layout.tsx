@@ -14,7 +14,7 @@ export default function Layout() {
         <ul>
           <li>
             <Link to="/">
-              <strong>Reseller Demo</strong>
+              <strong>I AM</strong>
             </Link>
           </li>
         </ul>
